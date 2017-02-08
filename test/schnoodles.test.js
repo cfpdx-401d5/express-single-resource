@@ -109,7 +109,14 @@ describe('schnoodles REST HTTP API', () => {
     });
 
     it('return 404 if id does not exist', () => {
-
+        return request.get('/schnoodles/hello')
+            .then(
+                () => { throw new Error('successful status code not expected'); },
+                response => {
+                    assert.equal(response.status, 500);
+                    assert.ok(response.body.error);
+                }
+            )
     });
 
     it('updates with new data', () => {
