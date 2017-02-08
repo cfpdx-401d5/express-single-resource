@@ -10,21 +10,6 @@ describe('unicorns REST HTTP API', () => {
 
     const DB_URI = 'mongodb://localhost:27017/unicorns';
 
-    before(() => connection.connect(DB_URI));
-    before(() => connection.db.dropDatabase());
-    after(() => connection.close());
-
-    const request = chai.request(app);
-
-    it('GET returns empty array of unicorns', () => {
-        return request.get('/unicorns')
-            .then(req => req.body)
-            .then(unicorns => assert.deepEqual(unicorns, []))
-            .catch(err => {
-                throw err;
-            });
-    });
-
     const garfield = {
         name: 'garfield',
         loves: ['lasagna', 'plants'],
@@ -51,6 +36,21 @@ describe('unicorns REST HTTP API', () => {
             .send(unicorn)
             .then(res => res.body);
     }
+
+    before(() => connection.connect(DB_URI));
+    before(() => connection.db.dropDatabase());
+    after(() => connection.close());
+
+    const request = chai.request(app);
+
+    it('GET returns empty array of unicorns', () => {
+        return request.get('/unicorns')
+            .then(req => req.body)
+            .then(unicorns => assert.deepEqual(unicorns, []))
+            .catch(err => {
+                throw err;
+            });
+    });
 
     it('saves a unicorn', () => {
         return saveUnicorn(garfield)
