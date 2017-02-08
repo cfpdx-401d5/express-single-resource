@@ -103,7 +103,9 @@ describe('schnoodles REST HTTP API', () => {
     });
 
     it('removes from list', () => {
-
+        return request.get('/schnoodles')
+            .then(request => request.body)
+            .then(schnoodles => assert.deepEqual(schnoodles, [breezy, princess, moose, caesar]));
     });
 
     it('return 404 if id does not exist', () => {
