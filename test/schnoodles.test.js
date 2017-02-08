@@ -31,6 +31,21 @@ describe('schnoodles REST HTTP API', () => {
         type: 'naughty dog'
     };
 
+    let moose = {
+        name: 'moose',
+        type: 'not a schnoodle, my dad\'s cat'
+    };
+
+    let caesar = {
+        name: 'caesar',
+        type: 'not a schnoodle, my childhood chocalte lab'
+    };
+
+    let spike = {
+        name: 'spike',
+        type: 'not a schnoodle, my old cat'
+    };
+
     function saveSchnoodle(schnoodle) {
         return request.post('/schnoodles')
             .send(schnoodle)
@@ -44,6 +59,56 @@ describe('schnoodles REST HTTP API', () => {
                 breezy._id = savedSchnoodle._id;
                 assert.deepEqual(savedSchnoodle, breezy);
             });
+    });
+
+    it('gets saved schnoodle', () => {
+        return request.get(`/schnoodles/${breezy._id}`)
+            .then(response => {
+                assert.deepEqual(response.body, breezy);
+            });
+    });
+
+    it('returns a list of schnoodles', () => {
+        return Promise.all([
+            saveSchnoodle(princess),
+            saveSchnoodle(moose),
+            saveSchnoodle(caesar),
+            saveSchnoodle(spike)
+        ])
+        .then(savedSchnoodles => {
+            princess = savedSchnoodles[0];
+            moose = savedSchnoodles[1];
+            caesar = savedSchnoodles[2];
+            spike = savedSchnoodles[3];
+        })
+        .then(() => request.get('/schnoodles'))
+        .then(response => {
+            const schnoodles = response.body;
+            assert.deepEqual(schnoodles, [breezy, princess, moose, caesar, spike]);
+        });
+    });
+
+    it('deletes a schnoodle', () => {
+        return request.del(`/schnoodles/${spike._id}`)
+            .then(response => {
+                assert.isTrue(response.body.deleted);
+            });
+    });
+
+    it('delete method returns false if id does not exisst', () => {
+
+    });
+
+    it('removes from list', () => {
+
+    });
+
+    it('return 404 if id does not exist', () => {
+
+    });
+
+    it('updates with new data', () => {
+
     });
 
 });
