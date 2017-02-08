@@ -1,0 +1,53 @@
+commit 2ef4d10334ff911d34020f95846db6f30a058bb9
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 13:13:38 2017 -0800
+
+    I forgot to establish this as a repository on github
+
+commit 79f3df34ba4702b8f329cf1d437e9b4b7eacbb94
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 12:20:24 2017 -0800
+
+    another test that passes and fails
+
+commit 6c5d9f8edef662c3406132192734c976c32843ac
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 12:17:42 2017 -0800
+
+    another test passing failing, trying to do better at commiting
+
+commit 152bac4d5f1cbbf7f38632ccd9ee2d4d2cd9ee93
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 12:15:38 2017 -0800
+
+    finally have all of the tests passing that I have written, some are passing just because I haven't written them yet
+
+commit 8b5d0bcbb48a2449540775b658c699b081e69540
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 11:35:13 2017 -0800
+
+    two passing and they can both fail because they were before I fixed spelling errors
+
+commit 95918663e50851204df56f8f0011a1e58c9d2545
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 11:22:27 2017 -0800
+
+    first test is passing and failing
+
+commit 5da03a107fc41b1b5201a023a55a63f9613af933
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 11:04:39 2017 -0800
+
+    app.js done
+
+commit 8700da358d2900462a025e02f37713160f85bc29
+Author: Clarefollett <chlaw101@gmail.com>
+Date:   Wed Feb 8 09:57:24 2017 -0800
+
+    set up file structure
+
+commit 136d084a054f010a12529226a7116921686c3cf6
+Author: Marty Nelson <marty@martypdx.com>
+Date:   Tue Feb 7 12:57:28 2017 -0800
+
+    Create LAB.md
