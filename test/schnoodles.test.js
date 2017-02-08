@@ -96,7 +96,10 @@ describe('schnoodles REST HTTP API', () => {
     });
 
     it('delete method returns false if id does not exisst', () => {
-
+        return request.del(`/schnoodles/${spike._id}`)
+            .then(response => {
+                assert.isFalse(response.body.deleted);
+            });
     });
 
     it('removes from list', () => {
