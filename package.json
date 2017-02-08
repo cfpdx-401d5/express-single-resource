@@ -1,0 +1,28 @@
+{
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "a learning app for trying out express",
+  "main": "app.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meghanroserebecca/express-single-resource.git"
+  },
+  "author": "meghan rebecca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meghanroserebecca/express-single-resource/issues"
+  },
+  "homepage": "https://github.com/meghanroserebecca/express-single-resource#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0"
+  }
+}
