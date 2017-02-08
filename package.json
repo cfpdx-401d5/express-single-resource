@@ -1,0 +1,27 @@
+{
+  "name": "Hello-HTTP",
+  "version": "1.0.0",
+  "description": "http hello server app",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "mocha",
+    "test:watch": "npm run test -- -w",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "lint": "eslint . --ignore-pattern '/initial-concepts/*'"
+  },
+  "author": "Tom Shultz",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.14.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {}
+}
