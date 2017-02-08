@@ -22,4 +22,33 @@ describe('modern conspiracies REST HTTP API', () => {
             .then(modern => assert.deepEqual (modern, []));
     });
 
+    let insideJob = {
+        conspiracy: '9-11 Was An Inside Job',
+        whoDunnit: 'Shrub and Co.',
+        why: 'money and continuous warfare',
+        warCrimes: true
+    };
+
+    function saveModernConspiracy(modern) {
+        return request.post('/modern')
+            .send(modern)
+            .then(res => res.body);
+    }
+
+    it('saves a modern conspiracy', () => {
+        return saveModernConspiracy(insideJob)
+            .then(savedModern => {
+                assert.isOk(savedModern._id);
+                insideJob._id = savedModern._id;
+                assert.deepEqual(savedModern, insideJob);
+            });
+    });
+
+    it('get a saved modern conspiracy', () => {
+        return request.get(`/modern/${insideJob._id}`)
+            .then(res => {
+                console.log(res.body);
+                assert.deepEqual(res.body, insideJob);
+            });
+    });
 })
