@@ -4,7 +4,10 @@
   "description": "a learning app for trying out express",
   "main": "app.js",
   "scripts": {
-    "test": "run test"
+    "test": "mocha",
+    "test:watch": "mocha -w",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
   }
 }
