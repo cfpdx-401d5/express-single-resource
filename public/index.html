@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unicorns</title>
+</head>
+
+<body>
+    <h1>Unicorns</h1>
+    <ul id='unicorns'></ul>
+
+    <script>
+        const ul = document.getElementById('unicorns');
+        fetch('/unicorns')
+            .then(res => res.json())
+            .then(unicorns => {
+                unicorns.forEach(unicorn => {
+                    const li = document.createElement('li');
+                    li.textContent = `${unicorn.name} born ${unicorn.dob} weighs ${unicorn.weight}`;
+                    ul.appendChild(li);
+                });
+            });
+    </script>
+</body>
+
+</html>
