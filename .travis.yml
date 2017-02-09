@@ -4,7 +4,7 @@ node_js:
  - "6"
 
 services:
-mongodb
+- mongoose
 
 before_script:
  - npm install -g eslint mocha
