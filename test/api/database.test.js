@@ -1,14 +1,16 @@
 const chai = require('chai');
 const assert = chai.assert;
 const chaiHttp = require('chai-http');
-chai.use(chaiHttp);
-const connection = require('../lib/mongo-connection');
+const mongoose = require('mongoose');
+const app = require('../../lib/app');
 
-const app = require('../lib/app');
+chai.use(chaiHttp);
+const request = chai.request(app);
+
+process.env.MONGODB_URI = 'mongodb://localhost:27017/unicorns-test';
+require('../../lib/mongo-connection');
 
 describe('unicorns REST HTTP API', () => {
-
-    const DB_URI = 'mongodb://localhost:27017/unicorns';
 
     const garfield = {
         name: 'garfield',
@@ -37,11 +39,7 @@ describe('unicorns REST HTTP API', () => {
             .then(res => res.body);
     }
 
-    before(() => connection.connect(DB_URI));
-    before(() => connection.db.dropDatabase());
-    after(() => connection.close());
-
-    const request = chai.request(app);
+    before(() => mongoose.connection.dropDatabase());
 
     it('GET returns empty array of unicorns', () => {
         return request.get('/unicorns')
@@ -57,6 +55,7 @@ describe('unicorns REST HTTP API', () => {
             .then(savedUnicorn => {
                 assert.isOk(savedUnicorn._id);
                 garfield._id = savedUnicorn._id;
+                garfield._v = 0;
                 assert.deepEqual(savedUnicorn, garfield);
             });
     });
