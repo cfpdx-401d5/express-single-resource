@@ -31,7 +31,10 @@
             "error",
             "always"
         ],
-        "skipBlankLines": true,
+        "no-trailing-spaces": [
+            "warn",
+            { "skipBlankLines": "0" }
+        ],
         "keyword-spacing": [
             "before",
             false,
