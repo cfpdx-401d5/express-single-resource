@@ -4,7 +4,7 @@
   "description": "a learning app for trying out express",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --recursive",
     "test:watch": "mocha -w",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/meghanroserebecca/express-single-resource#readme",
   "dependencies": {
     "express": "^4.14.1",
-    "mongodb": "^2.2.22"
+    "mongoose": "^4.8.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -32,14 +32,16 @@ describe('modern conspiracies REST HTTP API', () => {
     let theLizardKingLives = {
         conspiracy: 'Jim Morrison is Alive and Well!',
         where: 'Deep in the bayou or darkest Africa or...',
-        with: 'Elvis and a group of Nazi doppelgangers'
+        with: 'Elvis and a group of Nazi doppelgangers',
+        warCrimes: false
     }
 
     let moonNazis = {
         conspiracy: 'There are 3 Nazi bases on the moon',
         really: "Yes, really",
         noButLikeForReal: "Sigh, yes for real",
-        whereOnMoon: "The dark side, of course"
+        whereOnMoon: "The dark side, of course",
+        warCrimes: true
     }
 
     function saveModernConspiracy(modern) {
