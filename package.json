@@ -1,0 +1,31 @@
+{
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "This project uses express and mongodb to write a single resource HTTP REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmd-kvn/express-single-resource.git"
+  },
+  "author": "Kevin Wong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmd-kvn/express-single-resource/issues"
+  },
+  "homepage": "https://github.com/cmd-kvn/express-single-resource#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.15.0",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.8.1",
+    "morgan": "^1.8.0"
+  }
+}
