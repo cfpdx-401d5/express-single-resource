@@ -17,7 +17,7 @@ describe('pets REST HTTP API', () => {
 	const request = chai.request(app);
 
 	it('GET returns empty array of dogs', () => {
-		return request.get('/pets')
+		return request.get('/dogs')
 			.then(req => req.body)
 			.then(dogs => assert.deepEqual(dogs, []));
 	});
