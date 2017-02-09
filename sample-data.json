@@ -1,0 +1,23 @@
+{
+    "tools": [{
+            "name": "mongo",
+            "type": "database"
+        },
+        {
+            "name": "node",
+            "type": "platform"
+        },
+        {
+            "name": "superagent",
+            "type": "client emulator"
+        },
+        {
+            "name": "jquery",
+            "type": "Javascript library"
+        },
+        {
+            "name": "mocha",
+            "type": "test framework"
+        }
+    ]
+}
