@@ -1,14 +1,14 @@
 {
-  "name": "Hello-HTTP",
+  "name": "express-single-resource",
   "version": "1.0.0",
-  "description": "http hello server app",
+  "description": "express single resource app",
   "main": "server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "mocha",
+    "test": "mocha --recursive",
     "test:watch": "npm run test -- -w",
     "start": "node server.js",
     "watch": "nodemon server.js",
@@ -24,6 +24,8 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22",
+    "mongoose": "^4.8.1"
   }
 }
