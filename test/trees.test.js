@@ -20,30 +20,45 @@ describe('trees REST HTTP API', () => {
             .then(res => assert.deepEqual(res, []));
     });
 
-    const oak = {
-        commonName: 'Oak',
-        botanicalName: 'Quercus'
+    const englishOak = {
+        name: 'English Oak',
+        genus: 'Quercus',
+        species: 'robur'
     };
 
-    const pine = {
-        commonName: 'Pine',
-        botanicalName: 'Pinus'
+    const ponderosaPine = {
+        name: 'Ponderosa Pine',
+        genus: 'Pinus',
+        species: 'ponderosa'
     };
 
-    const maple = {
-        commonName: 'Maple',
-        botanicalName: 'Acer'
+    const bigLeafMaple = {
+        name: 'Big Leaf Maple',
+        genus: 'Acer',
+        species: 'macrophyllum'
     };
 
-    // it('saves a tree', () => {
-    //     return request.post('/trees')
-    //         .send(oak)
-    //         .then(res => res.body)
-    //         .then(savedTree => {
-    //             assert.deepEqual(savedPet, oak);
-    //             assert.isNotNull(savedPet._id)
-    //         });
-    // });
+    function saveTree(tree) {
+        return request.post('/trees')
+            .send(tree)
+            .then(res => res.body);
+    }
+
+    it('saves a tree', () => {
+        return saveTree(englishOak)
+            .then(savedTree => {
+                assert.isOk(savedTree._id);;
+                englishOak._id = savedTree._id;;
+                assert.deepEqual(savedTree, englishOak);
+            });
+    });
+
+    it('gets saved tree', () => {
+        return request.get(`/trees/${englishOak._id}`)
+            .then(res => {
+                assert.deepEqual(res.body, englishOak);
+            });
+    });
 
     after(() => connection.close())
 });
