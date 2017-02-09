@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha -w",
-    "start": "node server",
-    "start:watch": "nodemon server"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
   },
   "dependencies": {
     "express": "^4.14.1",
+    "mongodb": "^2.2.22",
     "mongoose": "^4.8.1",
     "morgan": "^1.8.0"
   }
