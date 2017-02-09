@@ -4,8 +4,8 @@ const http = require('http');
 
 const DB_URI = 'mongodb://localhost:27017/modern';
 
-connection.connect(DB_URI)
-    .catch(err => console.log('Connection to Database Failed:', err));
+// connection.connect(DB_URI)
+//     .catch(err => console.log('Connection to Database Failed:', err));
 
 const server = http.createServer(app);
 

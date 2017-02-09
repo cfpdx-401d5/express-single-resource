@@ -7,16 +7,18 @@
 <body>
     <h1>Conspiracies!</h1>
     <h2>Modern Conspiracies</h2>
-    <ul id='modern'></ul>
+    <ul id='modernC'></ul>
 
     <script>
         const ul = document.getElementById('modern');
         fetch('/modern')
             .then(res => res.json())
             .then(modern => {
-                const li = document.createElement('li');
-                li.textContent = `${modern.conspiracy}`;
-                ul.appendChild(li);
+                    modernC.forEach(modern => {
+                    const li = document.createElement('li');
+                    li.textContent = `${modern.conspiracy}`;
+                    ul.appendChild(li);
+                });
             });
     </script>
 </body>
