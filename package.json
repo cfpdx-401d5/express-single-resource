@@ -1,48 +1,48 @@
 {
-    "name": "express-single-resource",
-    "version": "1.0.0",
-    "description": "Exercise using express and mongo to write a single resource HTTP REST API with get, post, delete, put.",
-    "main": "app.js",
-    "directories": {
-        "test": "test"
-    },
-    "scripts": {
-        "pretest": "eslint",
-        "test": "mocha",
-        "watch": "npm-scripts-watcher"
-    },
-    "watch": {
-        "{src, test}/**(/*.js)": [
-            "test"
-        ]
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/krogseng/express-single-resource.git"
-    },
-    "keywords": [
-        "express",
-        "mongo",
-        "http",
-        "server",
-        "database"
-    ],
-    "author": "Lynn Krogseng",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/krogseng/express-single-resource/issues"
-    },
-    "homepage": "https://github.com/krogseng/express-single-resource#readme",
-    "dependencies": {
-        "eslint": "^3.15.0",
-        "express": "^4.14.1",
-        "mongo": "^0.1.0"
-    },
-    "devDependencies": {
-        "chai": "^3.5.0",
-        "chai-http": "^3.0.0",
-        "mocha": "^3.2.0",
-        "promises": "^0.2.5",
-        "superagent": "^3.4.1"
-    }
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "Exercise using express and mongo to write a single resource HTTP REST API with get, post, delete, put.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "eslint",
+    "test": "mocha",
+    "watch": "npm-scripts-watcher"
+  },
+  "watch": {
+    "{src, test}/**(/*.js)": [
+      "test"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krogseng/express-single-resource.git"
+  },
+  "keywords": [
+    "express",
+    "mongo",
+    "http",
+    "server",
+    "database"
+  ],
+  "author": "Lynn Krogseng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krogseng/express-single-resource/issues"
+  },
+  "homepage": "https://github.com/krogseng/express-single-resource#readme",
+  "dependencies": {
+    "eslint": "^3.15.0",
+    "express": "^4.14.1",
+    "mongo": "^0.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0",
+    "promises": "^0.2.5",
+    "superagent": "^3.4.1"
+  }
 }
