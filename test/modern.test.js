@@ -9,6 +9,8 @@ process.env.MONGODB_URI = 'mongodb://localhost:27017/modern-test';
 require('../lib/connection');
 const mongoose = require('mongoose');
 
+require('../lib/connection');
+
 describe('modern REST HTTP API', () => {
     
     before(() => mongoose.connection.dropDatabase());
@@ -52,8 +54,8 @@ describe('modern REST HTTP API', () => {
         return saveModern(insideJob)
             .then(savedModern => {
                 assert.isOk(savedModern._id);
-                insideJob._id = savedModern._is;
-                //insideJob.__v = 0;
+                insideJob._id = savedModern._id;
+                insideJob.__v = 0;
                 assert.deepEqual(savedModern, insideJob);
             });
     });
@@ -70,6 +72,7 @@ describe('modern REST HTTP API', () => {
         .then(() => request.get('/modern'))
         .then(res => {
             const modern = res.body;
+            console.log(modern);
             assert.deepEqual(modern, [insideJob, theLizardKingLives, moonNazis]);
         });
     });
@@ -90,7 +93,7 @@ describe('modern REST HTTP API', () => {
 
     it('removes from list get', () => {
         return request.get('/modern')
-            .then(req => req.bodu)
+            .then(req => req.body)
             .then(modern => assert.deepEqual(modern, [insideJob, theLizardKingLives]));
     });
 
