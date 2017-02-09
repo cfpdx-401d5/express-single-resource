@@ -11,9 +11,10 @@ describe('Unicorn model', () => {
                 weight: 125,
                 gender: 'f',
                 legs: 4
-            }).validate()
+            })
+            .validate()
             .then(pet => console.log(pet))
-            .catch(err => { console.log(err); throw err; });
+            .catch(err => { throw err; });
     });
 
     it('requires name (validation fails when no name)', () => {
