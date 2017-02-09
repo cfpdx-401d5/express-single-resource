@@ -1,18 +1,19 @@
 {
   "name": "express-single-resource",
   "version": "1.0.0",
-  "description": "<img src=\"https://cloud.githubusercontent.com/assets/478864/22186847/68223ce6-e0b1-11e6-8a62-0e3edc96725e.png\" width=30> HTTP and REST ===",
+  "description": "express single resource server",
   "main": "server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "pretest": "eslint ./lib/*",
     "test": "mocha",
     "test:watch": "mocha -w",
     "start": "node server.js",
     "start:watch": "nodemon server.js"
   },
-  "author": "Marty Nelson <marty@martypdx.com>",
+  "author": "Claire Follett",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
