@@ -58,15 +58,27 @@ describe('tools REST HTTP API', () => {
             .then(savedTool => {
                 assert.isOk(savedTool._id);
                 mongo._id = savedTool._id;
-                console.log('mongo ', mongo._id, ' savedTool', savedTool._id);
                 assert.deepEqual(savedTool, mongo);
             });
     });
-    /*
-    GET /resources/:id` return single resource object with that id (or 404 if doesn't exist)
-    */
-    it.skip('GET /tools/:id returns tool', () => {
 
-    })
+    it('GET saved item /tools/:id', () => {
+        return request.get(`/tools/${mongo._id}`)
+            .then(res => {
+                assert.deepEqual(res.body, mongo);
+            });
+    });
+
+    it('GET non-existent item /tools/:id', () => {
+        // use object from testdata that hasn't been added yet
+        return request.get(`/tools/012345678901`)
+            .then(
+                () => { throw new Error('success not expected with this id'); },
+                res => {
+                    assert.equal(res.status, 404)
+                    assert.isOk(res.response.body.error);
+                }
+            );
+    });
 
 }); // end describe tools test
