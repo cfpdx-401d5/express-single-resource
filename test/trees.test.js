@@ -20,19 +20,19 @@ describe('trees REST HTTP API', () => {
             .then(res => assert.deepEqual(res, []));
     });
 
-    const englishOak = {
+    let englishOak = {
         name: 'English Oak',
         genus: 'Quercus',
         species: 'robur'
     };
 
-    const ponderosaPine = {
+    let ponderosaPine = {
         name: 'Ponderosa Pine',
         genus: 'Pinus',
         species: 'ponderosa'
     };
 
-    const bigLeafMaple = {
+    let bigLeafMaple = {
         name: 'Big Leaf Maple',
         genus: 'Acer',
         species: 'macrophyllum'
@@ -60,6 +60,22 @@ describe('trees REST HTTP API', () => {
             });
     });
 
+    it('gets a list of trees', () => {
+        return Promise.all([
+            saveTree(ponderosaPine),
+            saveTree(bigLeafMaple)
+        ])
+        .then(savedTrees => {
+            ponderosaPine = savedTrees[0];
+            bigLeafMaple = savedTrees[1];
+        })
+        .then(() => request.get('/trees'))
+        .then(res => {
+            const trees = res.body;
+            assert.deepEqual(trees, [englishOak, ponderosaPine, bigLeafMaple])
+        });
+    });
+
     it('updates saved tree', () => {
         englishOak.genus = 'Ulmus';
         return request.put(`/trees/${englishOak._id}`)
@@ -69,7 +85,21 @@ describe('trees REST HTTP API', () => {
                 return request.get(`/trees/${englishOak._id}`)
             })
             .then(res => {
-                assert.deepEqual(res.body, englishOak)
+                assert.deepEqual(res.body.genus, englishOak.genus)
+            });
+    });
+
+    it('deletes a tree', () => {
+        return request.delete(`/trees/${ponderosaPine._id}`)
+            .then(res => {
+                assert.isTrue(res.body.deleted)
+            });
+    });
+
+    it('returns false if data to delete does not exist', () => {
+        return request.delete(`/trees/${ponderosaPine._id}`)
+            .then(res => {
+                assert.isFalse(res.body.deleted)
             });
     });
 
