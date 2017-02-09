@@ -8,7 +8,8 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "mocha --recursive",
+    "test": "mocha",
+    "test:api": "mocha test/api",
     "test:watch": "npm run test -- -w",
     "start": "node server.js",
     "watch": "nodemon server.js",
