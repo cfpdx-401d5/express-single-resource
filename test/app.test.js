@@ -20,4 +20,53 @@ describe('tools REST HTTP API', () => {
             .then(tools => assert.deepEqual(tools, []));
     });
 
-});
+    // test data 
+    let mongo = {
+        "name": "mongo",
+        "type": "database"
+    };
+
+    let node = {
+        "name": "node",
+        "type": "platform"
+    };
+
+    let superagent = {
+        "name": "superagent",
+        "type": "client emulator"
+    };
+
+    let jquery = {
+        "name": "jquery",
+        "type": "Javascript library"
+    };
+
+    let mocha = {
+        "name": "mocha",
+        "type": "test framework"
+    };
+
+    // just for test, save tools to db
+    function saveTool(tool) {
+        return request.post('/tools')
+            .send(tool)
+            .then(res => res.body);
+    }
+
+    it('saving single tool', () => {
+        return saveTool(mongo)
+            .then(savedTool => {
+                assert.isOk(savedTool._id);
+                mongo._id = savedTool._id;
+                console.log('mongo ', mongo._id, ' savedTool', savedTool._id);
+                assert.deepEqual(savedTool, mongo);
+            });
+    });
+    /*
+    GET /resources/:id` return single resource object with that id (or 404 if doesn't exist)
+    */
+    it.skip('GET /tools/:id returns tool', () => {
+
+    })
+
+}); // end describe tools test
