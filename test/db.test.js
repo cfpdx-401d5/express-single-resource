@@ -1,7 +1,7 @@
 const connection = require('../lib/connection.js');
 const assert = require('chai').assert;
 
-describe('connection to db', () => {
+describe.skip('connection to db', () => {
     
     const DB_URI = 'mongodb://localhost:27017/local';
     let db = null;
