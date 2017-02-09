@@ -6,12 +6,7 @@ mongoose.Promise = Promise;
 
 describe('Unicorn model', () => {
     it('example with all fields', () => {
-        return new Unicorn({
-                name: 'Oscar',
-                weight: 125,
-                gender: 'f',
-                legs: 4
-            })
+        return new Unicorn({ name: 'Oscar', weight: 125, gender: 'f', legs: 4 })
             .validate()
             .then(pet => console.log(pet))
             .catch(err => { throw err; });
