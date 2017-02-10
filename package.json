@@ -1,0 +1,31 @@
+{
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint ./lib",
+    "pretest": "npm run lint",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdcaulley/express-single-resource.git"
+  },
+  "author": "sdcaulley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sdcaulley/express-single-resource/issues"
+  },
+  "homepage": "https://github.com/sdcaulley/express-single-resource#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.15.0",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongodb": "^2.2.22"
+  }
+}
