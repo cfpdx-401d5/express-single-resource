@@ -70,8 +70,25 @@ describe('tools REST HTTP API', () => {
             });
     });
 
+
+    it('Save multiple items', () => {
+        return Promise.all([
+                saveTool(superagent),
+                saveTool(mocha)
+            ])
+            .then(savedTools => {
+                superagent = savedTools[0];
+                mocha = savedTools[1];
+            })
+            .then(() => request.get('/tools'))
+            .then(res => {
+                const tools = res.body;
+                assert.deepEqual(tools, [mongo, superagent, mocha])
+            });
+    });
+
     it('GET non-existent item /tools/:id', () => {
-        // use object from testdata that hasn't been added yet
+
         return request.get(`/tools/012345678901`)
             .then(
                 () => { throw new Error('success not expected with this id'); },
@@ -82,4 +99,10 @@ describe('tools REST HTTP API', () => {
             );
     });
 
+    it('DELETE /tools/:id', () => {
+        return request.del(`/tools/${superagent._id}`)
+            .then(res => {
+                assert.isTrue(res.body.deleted);
+            })
+    })
 }); // end describe tools test
