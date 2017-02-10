@@ -7,6 +7,7 @@ const app = require('../lib/app');
 
 describe('tools REST HTTP API', () => {
     const DB_URI = 'mongodb://localhost:27017/tools-test';
+    let db = null;
 
     before(() => connection.connect(DB_URI));
     before(() => connection.db.dropDatabase());
