@@ -1,0 +1,10 @@
+language: node_js
+
+node_js:
+ - "6"
+
+services:
+- mongoose
+
+before_script:
+ - npm install -g eslint mocha
