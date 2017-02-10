@@ -103,6 +103,21 @@ describe('tools REST HTTP API', () => {
         return request.del(`/tools/${superagent._id}`)
             .then(res => {
                 assert.isTrue(res.body.deleted);
+            });
+    });
+
+    it('PUT /tools/:id', () => {
+        mocha.type = 'flavor';
+        // not sure about this
+        const url = (`/tools/${mocha._id}`);
+        return request.put(url)
+            .send(mocha)
+            .then(res => {
+                assert.deepEqual(res.body, mocha);
+                return request.get(url);
             })
-    })
+            .then(res => {
+                assert.deepEqual(res.body, mocha);
+            });
+    });
 }); // end describe tools test
