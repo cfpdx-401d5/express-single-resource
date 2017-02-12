@@ -23,33 +23,28 @@ describe('schnoodles REST HTTP API', () => {
     });
 
     let breezy = {
-        name: 'breezy',
-        type: 'schnoodle',
-        naughty: true
+        "name": "breezy",
+        "type": "schnoodle"
     };
 
     let princess = {
-        name: 'princess',
-        type: 'schnoodle',
-        naughty: true
+        "name": "princess",
+        "type": "schnoodle"
     };
 
     let moose = {
-        name: 'moose',
-        type: 'schnoodle',
-        naughty: true
+        "name": "moose",
+        "type": "schnoodle"
     };
 
     let caesar = {
-        name: 'caesar',
-        type: 'schnoodle',
-        naughty: true
+        "name": "caesar",
+        "type": "schnoodle"
     };
 
     let spike = {
-        name: 'spike',
-        type: 'schnoodle',
-        naughty: true
+        "name": "spike",
+        "type":"schnoodle",
     };
 
     function saveSchnoodle(schnoodles) {
@@ -124,19 +119,19 @@ describe('schnoodles REST HTTP API', () => {
             );
     });
 
-    // it('updates with new data', () => {
-    //     princess.type = 'human';
-    //     const url = `/schnoodles/${princess._id}`;
+    it('updates with new data', () => {
+        princess.type = 'human';
+        const url = `/schnoodles/${princess._id}`;
 
-    //     return request.put(url)
-    //         .send(princess)
-    //         .then(res => {
-    //             assert.deepEqual(res.body, princess);
-    //             return request.get(url);
-    //         })
-    //         .then(res => {
-    //             assert.deepEqual(res.body, princess);
-    //         });
-    // });
+        return request.put(url)
+            .send(princess)
+            .then(res => {
+                assert.deepEqual(res.body, princess);
+                return request.get(url);
+            })
+            .then(res => {
+                assert.deepEqual(res.body, princess);
+            });
+    });
 
 });
