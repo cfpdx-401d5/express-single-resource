@@ -120,7 +120,7 @@ describe('schnoodles REST HTTP API', () => {
     });
 
     it('updates with new data', () => {
-        princess.type = 'human';
+        princess.color = 'spotty';
         const url = `/schnoodles/${princess._id}`;
 
         return request.put(url)
