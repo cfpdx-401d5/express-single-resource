@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schnoodles</title>
+</head>
+<body>
+    <h1>Schnoodles!</h1>
+    <ul id='schnoodles'></ul>
+
+    <script>
+        const ul = document.getElementById('schnoodles');
+        fetch('/schnoodles')
+            .then(res => res.json())
+            .then(schnoodles => {
+                const li = document.createElement('li');
+                li.textContent = `${schnoodles.type}`;
+                ul.appendChild(li);
+            });
+    </script>
+</body>
+</html>

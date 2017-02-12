@@ -2,7 +2,7 @@
   "name": "express-single-resource",
   "version": "1.0.0",
   "description": "express single resource server",
-  "main": "server.js",
+  "main": "node server",
   "directories": {
     "test": "test"
   },
@@ -10,10 +10,10 @@
     "pretest": "eslint ./lib/*",
     "test": "mocha",
     "test:watch": "mocha -w",
-    "start": "node server.js",
+    "start": "node server",
     "start:watch": "nodemon server.js"
   },
-  "author": "Claire Follett",
+  "author": "Claire Follett <chlaw101@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",

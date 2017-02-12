@@ -2,6 +2,7 @@ const chai = require('chai');
 const assert = chai.assert;
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
+
 const connection = require('../lib/connection');
 
 const app = require('../lib/app');
@@ -17,39 +18,44 @@ describe('schnoodles REST HTTP API', () => {
 
     it('returns empty array of schnoodles before testing with actual content', () => {
         return request.get('/schnoodles')
-            .then(request => request.body)
+            .then(req => req.body)
             .then(schnoodles => assert.deepEqual(schnoodles, []));
     });
 
-    const breezy = {
+    let breezy = {
         name: 'breezy',
-        type: 'naughty dog'
+        type: 'schnoodle',
+        naughty: true
     };
 
     let princess = {
         name: 'princess',
-        type: 'naughty dog'
+        type: 'schnoodle',
+        naughty: true
     };
 
     let moose = {
         name: 'moose',
-        type: 'not a schnoodle, my dad\'s cat'
+        type: 'schnoodle',
+        naughty: true
     };
 
     let caesar = {
         name: 'caesar',
-        type: 'not a schnoodle, my childhood chocalte lab'
+        type: 'schnoodle',
+        naughty: true
     };
 
     let spike = {
         name: 'spike',
-        type: 'not a schnoodle, my old cat'
+        type: 'schnoodle',
+        naughty: true
     };
 
-    function saveSchnoodle(schnoodle) {
+    function saveSchnoodle(schnoodles) {
         return request.post('/schnoodles')
-            .send(schnoodle)
-            .then(response => response.body);
+            .send(schnoodles)
+            .then(res => res.body);
     }
 
     it('saves a schnoodle', () => {
@@ -63,8 +69,8 @@ describe('schnoodles REST HTTP API', () => {
 
     it('gets saved schnoodle', () => {
         return request.get(`/schnoodles/${breezy._id}`)
-            .then(response => {
-                assert.deepEqual(response.body, breezy);
+            .then(res => {
+                assert.deepEqual(res.body, breezy);
             });
     });
 
@@ -82,45 +88,55 @@ describe('schnoodles REST HTTP API', () => {
             spike = savedSchnoodles[3];
         })
         .then(() => request.get('/schnoodles'))
-        .then(response => {
-            const schnoodles = response.body;
+        .then(res => {
+            const schnoodles = res.body;
             assert.deepEqual(schnoodles, [breezy, princess, moose, caesar, spike]);
         });
     });
 
     it('deletes a schnoodle', () => {
         return request.del(`/schnoodles/${spike._id}`)
-            .then(response => {
-                assert.isTrue(response.body.deleted);
+            .then(res => {
+                assert.isTrue(res.body.deleted);
             });
     });
 
     it('delete method returns false if id does not exisst', () => {
         return request.del(`/schnoodles/${spike._id}`)
-            .then(response => {
-                assert.isFalse(response.body.deleted);
+            .then(res => {
+                assert.isFalse(res.body.deleted);
             });
     });
 
     it('removes from list', () => {
         return request.get('/schnoodles')
-            .then(request => request.body)
+            .then(req => req.body)
             .then(schnoodles => assert.deepEqual(schnoodles, [breezy, princess, moose, caesar]));
     });
 
     it('return 404 if id does not exist', () => {
-        return request.get('/schnoodles/hello')
+        return request.get('/schnoodles/34324')
             .then(
-                () => { throw new Error('successful status code not expected'); },
-                response => {
-                    assert.equal(response.status, 500);
-                    assert.ok(response.body.error);
+                () => { throw new Error('error'); },
+                res => {
+                    assert.equal(res.status, 500);
                 }
-            )
+            );
     });
 
-    it('updates with new data', () => {
+    // it('updates with new data', () => {
+    //     princess.type = 'human';
+    //     const url = `/schnoodles/${princess._id}`;
 
-    });
+    //     return request.put(url)
+    //         .send(princess)
+    //         .then(res => {
+    //             assert.deepEqual(res.body, princess);
+    //             return request.get(url);
+    //         })
+    //         .then(res => {
+    //             assert.deepEqual(res.body, princess);
+    //         });
+    // });
 
 });
