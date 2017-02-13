@@ -8,7 +8,8 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "test": "mocha --recursive",
+    "test": "mocha",
+    "test:api": "mocha test/api",
     "test:watch": "npm run test -- -w",
     "start": "node server.js",
     "watch": "nodemon server.js",
@@ -25,7 +26,7 @@
   },
   "dependencies": {
     "express": "^4.14.1",
-    "mongodb": "^2.2.22",
-    "mongoose": "^4.8.1"
+    "mongoose": "^4.8.1",
+    "morgan": "^1.8.0"
   }
 }
