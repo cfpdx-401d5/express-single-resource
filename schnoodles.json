@@ -1,0 +1,29 @@
+{
+    "schnoodles": [{    
+            "name": "breezy",
+            "type": "schnoodle",
+            "naughty": "very"
+        },
+        {
+            "name": "princess",
+            "type": "schnoodle",
+            "naughty": "very"
+        },
+        {
+            "name": "moose",
+            "type": "schnoodle",
+            "naughty": "very"
+        },
+        {
+            "name": "caesar",
+            "type": "schnoodle",
+            "naughty": "very"
+        },
+        {
+            "name": "spike",
+            "type":"schnoodle",
+            "naughty": "very"
+        }
+    
+    ]
+}    
