@@ -1,7 +1,6 @@
 {
     "env": {
         "browser": true,
-        "commonjs": true,
         "es6": true,
         "node": true,
         "mocha": true,
@@ -15,10 +14,10 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-console": ["error", { "allow": ["warn", "error", "log"] }],
         "indent": [
             "error",
-            4,
-            { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }
+            4
         ],
         "linebreak-style": [
             "error",

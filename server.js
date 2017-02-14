@@ -1,11 +1,7 @@
 const app = require('./lib/app');
-const connection = require('./lib/mongo-connection');
 const http = require('http');
 
-const DB_URI = 'mongodb://localhost:27017/unicorns';
-
-connection.connect(DB_URI)
-    .catch(err => console.log('db connection failed:', err));
+require('./lib/mongo-connection');
 
 const server = http.createServer(app);
 
