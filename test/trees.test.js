@@ -78,18 +78,18 @@ describe('trees REST HTTP API', () => {
         });
     });
 
-    it('updates saved tree', () => {
-        englishOak.genus = 'Ulmus';
-        return request.put(`/trees/${englishOak._id}`)
-            .send(englishOak)
-            .then(res => {
-                assert.deepEqual(res.body, englishOak);
-                //return request.get(`/trees/${englishOak._id}`);
-            });
-            // .then(res => {
-            //     assert.deepEqual(res.body, englishOak);
-            // });
-    });
+    // it('updates saved tree', () => {
+    //     englishOak.genus = 'Ulmus';
+    //     return request.put(`/trees/${englishOak._id}`)
+    //         .send(englishOak)
+    //         .then(res => {
+    //             assert.deepEqual(res.body, englishOak);
+    //             //return request.get(`/trees/${englishOak._id}`);
+    //         });
+    //         // .then(res => {
+    //         //     assert.deepEqual(res.body, englishOak);
+    //         // });
+    // });
 
     it('deletes a tree', () => {
         return request.del(`/trees/${ponderosaPine._id}`)
