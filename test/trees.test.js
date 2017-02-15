@@ -87,7 +87,7 @@ describe('trees REST HTTP API', () => {
                 return request.get(`/trees/${englishOak._id}`);
             })
             .then(res => {
-                assert.deepEqual(res.body.genus, englishOak.genus);
+                assert.deepEqual(res.body, englishOak);
             });
     });
 
