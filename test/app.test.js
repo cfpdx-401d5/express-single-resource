@@ -47,12 +47,20 @@ describe('tools REST HTTP API', () => {
         "type": "test framework"
     };
 
+
     // just for test, save tools to db
     function saveTool(tool) {
         return request.post('/tools')
             .send(tool)
             .then(res => res.body);
     }
+
+    it('get all for empty array', () => {
+        return request.get(`/tools`)
+            .then(res => {
+                assert.deepEqual(res.body, []);
+            });
+    });
 
     it('saving single tool', () => {
         return saveTool(mongo)
