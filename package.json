@@ -34,7 +34,7 @@
     },
     "homepage": "https://github.com/krogseng/express-single-resource#readme",
     "dependencies": {
-        "eslint": "^3.15.0",
+
         "express": "^4.14.1",
         "mongo": "^0.1.0"
     },
@@ -43,6 +43,7 @@
         "chai-http": "^3.0.0",
         "mocha": "^3.2.0",
         "promises": "^0.2.5",
-        "superagent": "^3.4.1"
+        "superagent": "^3.4.1",
+        "eslint": "^3.15.0"
     }
 }
