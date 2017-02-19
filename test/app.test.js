@@ -7,6 +7,7 @@ const app = require('../lib/app');
 
 describe('tools REST HTTP API', () => {
     const DB_URI = 'mongodb://localhost:27017/tools-test';
+    let db = null;
 
     before(() => connection.connect(DB_URI));
     before(() => connection.db.dropDatabase());
@@ -46,12 +47,20 @@ describe('tools REST HTTP API', () => {
         "type": "test framework"
     };
 
+
     // just for test, save tools to db
     function saveTool(tool) {
         return request.post('/tools')
             .send(tool)
             .then(res => res.body);
     }
+
+    it('get all for empty array', () => {
+        return request.get(`/tools`)
+            .then(res => {
+                assert.deepEqual(res.body, []);
+            });
+    });
 
     it('saving single tool', () => {
         return saveTool(mongo)
@@ -69,8 +78,25 @@ describe('tools REST HTTP API', () => {
             });
     });
 
+
+    it('Save multiple items', () => {
+        return Promise.all([
+                saveTool(superagent),
+                saveTool(mocha)
+            ])
+            .then(savedTools => {
+                superagent = savedTools[0];
+                mocha = savedTools[1];
+            })
+            .then(() => request.get('/tools'))
+            .then(res => {
+                const tools = res.body;
+                assert.deepEqual(tools, [mongo, superagent, mocha])
+            });
+    });
+
     it('GET non-existent item /tools/:id', () => {
-        // use object from testdata that hasn't been added yet
+
         return request.get(`/tools/012345678901`)
             .then(
                 () => { throw new Error('success not expected with this id'); },
@@ -81,4 +107,25 @@ describe('tools REST HTTP API', () => {
             );
     });
 
+    it('DELETE /tools/:id', () => {
+        return request.del(`/tools/${superagent._id}`)
+            .then(res => {
+                assert.isTrue(res.body.deleted);
+            });
+    });
+
+    it('PUT /tools/:id', () => {
+        mocha.type = 'flavor';
+        // not sure about this
+        const url = (`/tools/${mocha._id}`);
+        return request.put(url)
+            .send(mocha)
+            .then(res => {
+                assert.deepEqual(res.body, mocha);
+                return request.get(url);
+            })
+            .then(res => {
+                assert.deepEqual(res.body, mocha);
+            });
+    });
 }); // end describe tools test
