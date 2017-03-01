@@ -1,14 +1,10 @@
 const app = require('./lib/app');
-const connection = require('./lib/connection');
+require('./lib/connection');
 const http = require('http');
-
-const DB_URI = 'mongodb://localhost:27017/dogs';
-
-connection.connect(DB_URI)
-	.catch(err => console.log('db connection failed !!!', err));
+const port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
-server.listen(3000, () => {
-	console.log('server running on port ', server.address());
+server.listen(port, () => {
+	console.log('server running on port ', server.address().port);
 });

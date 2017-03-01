@@ -1,18 +1,18 @@
+// tests for mongoose functionality of REST
 const chai = require('chai');
 const assert = chai.assert;
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-const connection = require('../lib/connection');
 
-const app = require('../lib/app');
+process.env.MONGODB_URI = 'mongodb://localhost:27017/dogs-test';
 
-describe('pets REST HTTP API', () => {
+require('../../lib/connection');
+const mongoose = require('mongoose');
+const app = require('../../lib/app');
 
-	const DB_URI = 'mongodb://localhost:27017/dogs-test';
+describe('dogs REST HTTP API', () => {
 
-	before(() => connection.connect(DB_URI));
-	before(() => connection.db.dropDatabase());
-	after(() => connection.close());
+	before(() => mongoose.connection.dropDatabase());
 
 	const request = chai.request(app);
 
@@ -48,6 +48,7 @@ describe('pets REST HTTP API', () => {
 			.then(savedDog => {
 				assert.isOk(savedDog._id);
 				cujo._id = savedDog._id;
+				cujo.__v = 0;
 				assert.deepEqual(savedDog, cujo);
 			});
 	});
@@ -77,16 +78,16 @@ describe('pets REST HTTP API', () => {
 
 	it('deletes a dog', () => {
 		return request.del(`/dogs/${zen._id}`)
-			.then(res => {
-				assert.isTrue(res.body.deleted);
-			});
+		.then(res => {
+			assert.isTrue(res.body.deleted);
+		});
 	});
 
 	it('delete return false if doesn\'t exist', () => {
 		return request.del(`/dogs/${zen._id}`)
-			.then(res => {
-				assert.isFalse(res.body.deleted);
-			});
+		.then(res => {
+			assert.isFalse(res.body.deleted);
+		});
 	});
 
 	it('removes from list get', () => {
@@ -98,7 +99,9 @@ describe('pets REST HTTP API', () => {
 	it('return 404 on non-existing id get', () => {
 		return request.get('/dogs/589a503f2fe3c376dc88b895')
 			.then(
-				() => { throw new Error('successful status code not expected'); },
+				() => { 
+					throw new Error('successful status code not expected'); 
+				},
 				res => {
 					assert.equal(res.status, 404);
 					assert.ok(res.response.body.error);
