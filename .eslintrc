@@ -10,7 +10,9 @@
     "env": {
         "node": true,
         "mocha": true,
-        "es6": true
+        "es6": true,
+        "mongo": true,
+        "commonjs": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -30,15 +32,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "no-trailing-spaces": [
-            "warn"
-        ],
-        "keyword-spacing": [
-            "before",
-            false,
-            "after",
-            true
         ]
     }
 }
