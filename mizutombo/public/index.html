@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">	
+	<title>Dogs</title>
+</head>
+<body>
+	<h1>Dogs</h1>
+	<ul id='dogs'></ul>
+
+	<script>
+		const ul = document.getElementById('dogs');
+		fetch('/dogs')
+			.then(res => res.json())
+			.then(dogs => {
+				dogs.forEach(dog => {
+					const li = document.createElement('li');
+					li.textContent = `${dog.name} the ${dog.breed}`;
+					ul.appendChild(li);
+				});
+			});
+	</script>
+</body>
+</html>

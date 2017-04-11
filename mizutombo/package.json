@@ -1,0 +1,31 @@
+{
+  "name": "express-single-resource",
+  "version": "1.0.0",
+  "description": "express single resource app",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+   "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "mocha --recursive",
+    "test:watch": "npm run test -- -w",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js"
+  },
+  "author": "Tom Shultz",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.14.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1",
+    "morgan": "^1.8.0"
+  }
+}

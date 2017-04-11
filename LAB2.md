@@ -23,4 +23,8 @@ Add another resource
 * Use mongoose to connect to mongo: 1pts
 * Mongoose Schema/Model: 4pts
 * Model tests: 2pts
+<<<<<<< HEAD
 * Router: 3pts
+=======
+* Router: 3pts
+>>>>>>> mizutombo
